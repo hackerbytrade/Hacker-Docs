@@ -9,7 +9,6 @@ $domainObj will store the entire domain object,
 $PDC will store the Name of the PDC 
 $SearchString will build the provider path for output. 
 
-
 powershell -ExecutionPolicy Bypass -File script.ps1
 #>
 $domainObj = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
