@@ -20,3 +20,4 @@
 | --------------|-------------------|
 | `echo -n academy \| xxd -p` | Convert hex to ASCII |
 | `echo -n 61636164656d79 \| xxd -r -p` | Convert ASCII to hex |
+
