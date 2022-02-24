@@ -15,7 +15,7 @@
 | Base Stack Pointer | `rbp` | `bpl` |
 | Current/Top Stack Pointer | `rsp` | `spl` |
 | Instruction Pointer 'call only' | `rip` | `ipl` |
-
+ 
 ## Assembly and Disassembly
 
 | **Command**   | **Description**   |
