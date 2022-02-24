@@ -13,7 +13,7 @@
 | 6th arg | `r9` | `r9b` |
 | **Pointer Registers** |
 | Base Stack Pointer | `rbp` | `bpl` |
-| Current/Top Stack Pointer | `rsp` | `spl` |
+| Current/Top Stack Pointer | `rsp` | `spl` | 
 | Instruction Pointer 'call only' | `rip` | `ipl` |
 
 ## Assembly and Disassembly
