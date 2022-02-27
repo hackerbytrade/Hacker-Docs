@@ -46,7 +46,7 @@
 | `c` | Continue to the next break point |
 | `patch string 0x402000 "Patched!\\x0a"` | Patch address value |
 | `set $rdx=0x9` | Set register value |
-
+ 
 ## Assembly Instructions
 
 | **Instruction** | **Description** | **Example** |
