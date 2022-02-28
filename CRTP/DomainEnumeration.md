@@ -58,3 +58,57 @@ Get List Of All Properties For Users In The Current Domain
 Search For A Particular String In A User's Attributes
 `Find-UserField -SearchField Description -SearchTerm "built"` | PowerView ONLY!!! 
 `Get-ADUser -Filter 'Description -like "*built*"' -Properties Description | select name,Description` | AD Module
+
+Get List Of Computer In Current Domain:
+`Get-NetComputer` | SharpView
+`Get-NetComputer -OperatingSystem "*Server 2016*"` | SharpView
+`Get-NetComputer -Ping` | SharpView
+`Get-NetComputer -FullData` | SharpView
+`Get-AD Computer -Filter * | select Name` | AD Module
+`Get-AD Computer -Filter 'OperatingSystem -like "*Server 2016*"' -Properties OperatingSystem | select Name,OperatingSystem` | AD Module
+`Get-AD Computer -Filter * -Properties DNSHostName | %{Test-Connection -Count 1 -ComputerName $_.DNSHostName}` | AD Module
+`Get-AD Computer -Filter * -Properties *` | AD Module
+
+Get List Of Groups In Current Domain:
+`Get-NetGroup` | SharpView
+`Get-NetGroup -Domain <targetdomain>` | SharpView
+`Get-NetGroup -FullData` | SharpView
+`Get-ADGroup -Filter * | select Name` | AD Module
+`Get-ADGroup -Filter 'Name -like "*admin*"' select Name` | AD Module
+
+Get All Groups Containing Word "admin" In Group Name:
+`Get-NetGroup *admin*` | SharpView
+`Get-ADGroup -Filter 'Name -like "*admin"' | select Name` | AD Module
+
+Get All Members Of Domain Admins Group:
+`Get-NetGroupMember -GroupName "Domain Admins" -Recurse` | SharpView
+`Get-ADGroupMember -Identity "Domain Admins" -Recursive` | AD Module
+
+Get Group Membership For User:
+`Get-NetGroup -UserName "student1"` | SharpView
+`Get-ADPrincipalGroupMembership -Identity student1` | AD Module
+
+List ALL Local Groups On Machine (Need Administartor Priveleges on Non-DC Servers):
+`Get-NetLocalGroup -ComputerName dcorp-dc.dollarcorp.moneycorp.local -ListGroups` | SharpView
+
+Get Members All Local Groups On Machine (Need Administartor Priveleges on Non-DC Servers):
+`Get-NetLocalGroup -ComputerName dcorp-dc.dollarcorp.moneycorp.local -Recurse` | SharpView
+
+Get Actively Logged In Users On Computer (Need Local Admin Rights On Target):
+`Get-NetLoggedon -ComputerName <servername>` | SharpView
+
+Get Locally Logged Users On Computer (Need Remote Registry On The Target.  Started by default on Server OS)
+`Get-NetLoggedonLocal -ComputerName dcorp-dc.dollarcorp.moneycorp.local` | SharpView
+
+Get Last Logged User On A Computer (Need admin rights and regsitry on the target):
+`Get-LastLoggedon -ComputerName <servername>`
+
+Find Shares On Host In Current Domain:
+`Invoke-ShareFinder -Verbose` | PowerView
+
+Find Sensitive Files On Host In Current Domain:
+`Invoke-FileFinder -Verbose` | PowerView
+
+Get All File Server Of Domain:
+`Get-NetFileServer` | SharpView
+
