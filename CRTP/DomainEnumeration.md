@@ -112,3 +112,41 @@ Find Sensitive Files On Host In Current Domain:
 Get All File Server Of Domain:
 `Get-NetFileServer` | SharpView
 
+====================================================
+=======================GPOs=========================
+====================================================
+
+Get List Of GPO Current Domain:
+`Get-NetGPO` | SharpView
+`Get-NetGPO -ComputerName dcorp-student1.dollarcorp.moneycorp.local` | SharpView
+`Get-GPO -All` | GPO Module
+`Get-GPResultantSetOfPolicy -ReportType Html -Path C:\Users\Administrator\report.html` | Provides RSoP Resultant Set of Policy | GPO Module
+
+Get GPO(s) Which Use Restricted Groups or groups.xml for interesting users
+`Get-NetGPOGroup` | SharpView
+
+Get Users In Local Group Of A Machine Using GPO:
+`Find-GPOComputerAdmin -Computername dcorp-student1.dollarcorp.moneycorp.local` | SharpView
+`Find-GPOLocation -UserName student1 -Verbose` | SharpView
+
+Get OUs In A Domain:
+`Get-NetOU -FullData` | SharpView
+`Get-ADOrganizationalUnit -Filter * -Properties *` | AD Module
+
+Get GPO Applied On An OU. Read GPOname from gplink attribute from Get-NetOU
+`Get-NetGPO -GPOname "{AB306569-220D-43FF-B03B-83E8F4EF8081}"` | SharpView
+`Get-GPO -GUID AB306569-220D-43FF-B03B-83E8F4EF8081` | GPO Module
+
+Get ACLs Associated With Specific Object:
+`Get-ObjectAcl -SamAccountName student1 -ResolveGUIDs` | SharpView
+`Get-ObjectAcl -ADSprefix 'CN=Administartor,CN=Users'  -Verbose` | SharpView
+`(Get-ACL 'AD:\CN=Administrator,CN=Users,DC=dollarcorp,DC=money,DC=local').Access` | Doesn't Resolve GUIDs | AD Module
+
+Get ACLs Associated With Specified LDAP Path To Be Used For Search:
+`Get-ObjectAcl -ADSpath "LDAP://CN=Domain Admins,CN=Users,DC=dollarcorp,DC=money,DC=local" -ResolveGUIDs -Verbose` | SharpView
+
+Search For Interesting ACEs
+`Invoke-ACLScanner -ResolveGUIDs` | SharpView
+
+Get ACLs Associated With Specified Path:
+`Get-PathAcl -Path "\\dcorp-dc.dollarcorp.moneycorp.local\sysvol"` | SharpView
