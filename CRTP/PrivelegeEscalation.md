@@ -18,3 +18,4 @@ https://github.com/AlessandroZ/BeRoot
 Privesc:
 https://github.com/itm4n/PrivescCheck
 `Invoke-PrivEsc`
+
