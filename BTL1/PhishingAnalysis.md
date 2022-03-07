@@ -123,7 +123,7 @@ List the type of block taken, the value that was blocked, the time and date of t
 
  Sample Final Report 
 
- Email Description and Artefacts Collected
+Email Description and Artefacts Collected
 Sending Address: emailsecalert1@gmail.com
 
 Subject Line: Your Email Will be Locked! Act NOW!
