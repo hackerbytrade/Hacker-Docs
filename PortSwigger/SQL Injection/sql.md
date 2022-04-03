@@ -1,32 +1,38 @@
-# ============================================
+============================================
 
 # Basic
 
 ============================================
-Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
-To solve the lab, perform an SQL injection attack that causes the application to display details of all products in any category, both released and unreleased.
 
-# GET /filter?category=Lifestyle'+OR+1=1--
+# Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
 
-Lab: SQL injection vulnerability allowing login bypass
-To solve the lab, perform an SQL injection attack that logs in to the application as the administrator user.
+# To solve the lab, perform an SQL injection attack that causes the application to display details of all products in any category, both released and unreleased.
 
-# Username: Administrator'--
+GET /filter?category=Lifestyle'+OR+1=1--
+
+# Lab: SQL injection vulnerability allowing login bypass
+
+# To solve the lab, perform an SQL injection attack that logs in to the application as the administrator user.
+
+Username: Administrator'--
 
 ============================================
-SQL injection UNION attacks
 
-For a UNION query to work, two key requirements must be met:
+# SQL injection UNION attacks
 
-The individual queries must return the same number of columns.
-The data types in each column must be compatible between the individual queries.
+============================================
 
-To carry out an SQL injection UNION attack, you need to ensure that your attack meets these two requirements. This generally involves figuring out:
+# For a UNION query to work, two key requirements must be met:
 
-How many columns are being returned from the original query?
-Which columns returned from the original query are of a suitable data type to hold the results from the injected query?
+1. The individual queries must return the same number of columns.
+2. The data types in each column must be compatible between the individual queries.
 
-When performing an SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
+# To carry out an SQL injection UNION attack, you need to ensure that your attack meets these two requirements. This generally involves figuring out:
+
+1. How many columns are being returned from the original query?
+2. Which columns returned from the original query are of a suitable data type to hold the results from the injected query?
+
+# When performing an SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
 
 The first method involves injecting a series of ORDER BY clauses and incrementing the specified column index until an error occurs. For example, assuming the injection point is a quoted string within the WHERE clause of the original query, you would submit:
 
@@ -66,7 +72,8 @@ For example, you could use a UNION attack with the following input:
 # ' UNION SELECT @@version--
 
 ============================================
-Lab: SQL injection UNION attack, determining the number of columns returned by the query
+
+# Lab: SQL injection UNION attack, determining the number of columns returned by the query
 
 To solve the lab, determine the number of columns returned by the query by performing an SQL injection UNION attack that returns an additional row containing null values.
 
@@ -132,7 +139,7 @@ This lab contains an SQL injection vulnerability in the product category filter.
 
 # Query to get version info via banner
 
-# `'+UNION+SELECT+BANNER,NULL+FROM+v$version--`
+'+UNION+SELECT+BANNER,NULL+FROM+v$version--
 
 Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft
 
