@@ -28,6 +28,10 @@
 &&
 `wmic process where parentprocessid=2068 get name,commandline,processid,parentprocessid` | select child process of parent process
 
+`wmic process where processid=4588 delete` | Delete process with WMIC
+
+`wmic process where "name like 'powershell%'" list brief` | WMIC process where name like
+
 # Services Examination
 
 `services.msc` | GUI
@@ -72,3 +76,13 @@ Select `Create Basic Task` | Autowizard to run a task at a given time
 
 `lusrmgr.msc` | Local Users and Groups GUI
 
+`net localgroup administrators` | get users in local administrators group
+
+# Unusual Log Entries
+
+`secpol` | Security Policy Editor GUI
+
+`eventvwr.msc` | Event View GUI
+
+# Base64 Decode Powershell
+`[System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("dwBoAGkAbABlACgAJAB0AHIAdQBlACkAewAkAGYAbABhAGcAIAA9ACAAIgBTAGEAcwBxAHUAYQBjAGgAZQA3ADAAOAA0ADMANwAwADAAMwA0ACIAOwAgAFsAUwB5AHMAdABlAG0ALgBUAGgAcgBlAGEAZABpAG4AZwAuAFQAaAByAGUAYQBkAF0AOgA6AFMAbABlAGUAcAAoADEAMAAwADAAMAApAH0AOwA="))`
