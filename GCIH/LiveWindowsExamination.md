@@ -28,7 +28,7 @@
 &&
 `wmic process where parentprocessid=2068 get name,commandline,processid,parentprocessid` | select child process of parent process
 
-# Services
+# Services Examination
 
 `services.msc` | GUI
 
@@ -58,4 +58,17 @@ OR
 
 # Unscheduled Tasks
 
-`taskschd.msc` | GUI
+`taskschd.msc` | Task Scheduler GUI
+
+Select `Create Basic Task` | Autowizard to run a task at a given time
+
+### View this or other scheduled tasks with schtasks ###
+
+`schtasks | more ` | View scheduled tasks
+
+`schtasks /delete /tn Test` | Delete scheduled task named "Test"
+
+# Unusual Accounts
+
+`lusrmgr.msc` | Local Users and Groups GUI
+
