@@ -12,6 +12,8 @@
 
 `Username: Administrator'--`
 
+[SQL Injection UNION Attacks](https://github.com/hackerbytrade/Hacker-Docs/blob/9e8136521216e9c29d478190488a42402b34d1ae/PortSwigger/SQL%20Injection/sql_union.md)
+
 # SQL Injection UNION Attacks
 
 ### For a UNION query to work, two key requirements must be met:
