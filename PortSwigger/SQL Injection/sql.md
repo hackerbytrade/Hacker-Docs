@@ -12,9 +12,9 @@
 
 `Username: Administrator'--`
 
-[SQL Injection UNION Attacks](https://github.com/hackerbytrade/Hacker-Docs/blob/9e8136521216e9c29d478190488a42402b34d1ae/PortSwigger/SQL%20Injection/sql_union.md)
+[**SQL Injection UNION Attacks**](https://github.com/hackerbytrade/Hacker-Docs/blob/9e8136521216e9c29d478190488a42402b34d1ae/PortSwigger/SQL%20Injection/sql_union.md)
 
-[Examining The Database](https://github.com/hackerbytrade/Hacker-Docs/blob/9e8136521216e9c29d478190488a42402b34d1ae/PortSwigger/SQL%20Injection/sql_union.md)
+[**Examining The Database**](https://github.com/hackerbytrade/Hacker-Docs/blob/f695b174404a5620c4cac7f58a3f632f64517614/PortSwigger/SQL%20Injection/sql_examine_database.md)
 
 
 
