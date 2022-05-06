@@ -1,5 +1,5 @@
 # String concatenation
-## You can concatenate together multiple strings to make a single string.
+## You can concatenate together multiple strings to make a single string. 
 
 Oracle	`'foo'||'bar'`
 Microsoft	`'foo'+'bar'`
