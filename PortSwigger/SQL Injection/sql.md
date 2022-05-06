@@ -55,7 +55,7 @@
 > PostgreSQL `SELECT version()` <br>
 > For example, you could use a UNION attack with the following input: <br>
 
-# ' UNION SELECT @@version--
+`' UNION SELECT @@version--`
 
 ============================================
 
