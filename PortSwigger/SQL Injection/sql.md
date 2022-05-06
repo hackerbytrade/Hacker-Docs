@@ -16,6 +16,5 @@
 
 [**Examining The Database**](https://github.com/hackerbytrade/Hacker-Docs/blob/f695b174404a5620c4cac7f58a3f632f64517614/PortSwigger/SQL%20Injection/sql_examine_database.md)
 
+[**Blind SQL Injection**](https://github.com/hackerbytrade/Hacker-Docs/blob/f695b174404a5620c4cac7f58a3f632f64517614/PortSwigger/SQL%20Injection/sql_examine_database.md)
 
-
-# Lab: Blind SQL injection with conditional responses
