@@ -8,7 +8,7 @@
 
 ## **Lab: SQL injection vulnerability allowing login bypass**
 
-### To solve the lab, perform an SQL injection attack that logs in to the application as the administrator user.
+### *To solve the lab, perform an SQL injection attack that logs in to the application as the administrator user.*
 
 `Username: Administrator'--`
 
@@ -49,11 +49,11 @@
 ### Database Version
 
 ### The queries to determine the database version for some popular database types are as follows:
-> Database type Query
-> Microsoft, MySQL `SELECT @@version`
-> Oracle `SELECT * FROM v$version`
-> PostgreSQL `SELECT version()`
-> For example, you could use a UNION attack with the following input:
+> Database type Query <br>
+> Microsoft, MySQL `SELECT @@version` <br>
+> Oracle `SELECT * FROM v$version` <br>
+> PostgreSQL `SELECT version()` <br>
+> For example, you could use a UNION attack with the following input: <br>
 
 # ' UNION SELECT @@version--
 
