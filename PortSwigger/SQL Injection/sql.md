@@ -6,41 +6,33 @@
 
 `GET /filter?category=Lifestyle'+OR+1=1--`
 
-# Lab: SQL injection vulnerability allowing login bypass
+## Lab: SQL injection vulnerability allowing login bypass
 
-# To solve the lab, perform an SQL injection attack that logs in to the application as the administrator user.
+### To solve the lab, perform an SQL injection attack that logs in to the application as the administrator user.
 
-Username: Administrator'--
-
-============================================
+`Username: Administrator'--`
 
 # SQL injection UNION attacks
 
-============================================
+## For a UNION query to work, two key requirements must be met:
+- The individual queries must return the same number of columns.
+- The data types in each column must be compatible between the individual queries.
 
-# For a UNION query to work, two key requirements must be met:
+## To carry out an SQL injection UNION attack, you need to ensure that your attack meets these two requirements. This generally involves figuring out:
+- How many columns are being returned from the original query?
+- Which columns returned from the original query are of a suitable data type to hold the results from the injected query?
 
-1. The individual queries must return the same number of columns.
-2. The data types in each column must be compatible between the individual queries.
+## When performing an SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
 
-# To carry out an SQL injection UNION attack, you need to ensure that your attack meets these two requirements. This generally involves figuring out:
+### The first method involves injecting a series of ORDER BY clauses and incrementing the specified column index until an error occurs. For example, assuming the injection point is a quoted string within the WHERE clause of the original query, you would submit:
+`' ORDER BY 1--`
+`' ORDER BY 2--`
+`' ORDER BY 3--`
 
-1. How many columns are being returned from the original query?
-2. Which columns returned from the original query are of a suitable data type to hold the results from the injected query?
-
-# When performing an SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
-
-The first method involves injecting a series of ORDER BY clauses and incrementing the specified column index until an error occurs. For example, assuming the injection point is a quoted string within the WHERE clause of the original query, you would submit:
-
-' ORDER BY 1--
-' ORDER BY 2--
-' ORDER BY 3--
-
-The second method involves submitting a series of UNION SELECT payloads specifying a different number of null values:
-
-' UNION SELECT NULL--
-' UNION SELECT NULL,NULL--
-' UNION SELECT NULL,NULL,NULL--
+### The second method involves submitting a series of UNION SELECT payloads specifying a different number of null values:
+`' UNION SELECT NULL--`
+`' UNION SELECT NULL,NULL--`
+`' UNION SELECT NULL,NULL,NULL--`
 
 The reason for using NULL as the values returned from the injected SELECT query is that the data types in each column must be compatible between the original and the injected queries. Since NULL is convertible to every commonly used data type, using NULL maximizes the chance that the payload will succeed when the column count is correct.
 On Oracle, every SELECT query must use the FROM keyword and specify a valid table. There is a built-in table on Oracle called dual which can be used for this purpose. So the injected queries on Oracle would need to look like: ' UNION SELECT NULL FROM DUAL--.
