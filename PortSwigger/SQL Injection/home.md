@@ -1,4 +1,4 @@
-[**Basic SQL Injection**](https://github.com/hackerbytrade/Hacker-Docs/blob/fac62f0a820c2aaefb686487ae8992df92c3a4de/PortSwigger/SQL%20Injection/sql_blind.md)
+[**Basic SQL Injection**](https://github.com/hackerbytrade/Hacker-Docs/blob/c5d3ad3911aabd97f88867e097989ebe4550417d/PortSwigger/SQL%20Injection/sql_basic.md)
 
 [**SQL Injection UNION Attacks**](https://github.com/hackerbytrade/Hacker-Docs/blob/9e8136521216e9c29d478190488a42402b34d1ae/PortSwigger/SQL%20Injection/sql_union.md)
 
