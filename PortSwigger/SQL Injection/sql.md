@@ -25,24 +25,24 @@
 ### When performing an SQL injection UNION attack, there are two effective methods to determine how many columns are being returned from the original query.
 
 ### The first method involves injecting a series of ORDER BY clauses and incrementing the specified column index until an error occurs. For example, assuming the injection point is a quoted string within the WHERE clause of the original query, you would submit:
-`' ORDER BY 1--`
-`' ORDER BY 2--`
-`' ORDER BY 3--`
+`' ORDER BY 1--` <br>
+`' ORDER BY 2--` <br>
+`' ORDER BY 3--` <br>
 
 ### The second method involves submitting a series of UNION SELECT payloads specifying a different number of null values:
-`' UNION SELECT NULL--`
-`' UNION SELECT NULL,NULL--`
-`' UNION SELECT NULL,NULL,NULL--`
+`' UNION SELECT NULL--` <br>
+`' UNION SELECT NULL,NULL--` <br>
+`' UNION SELECT NULL,NULL,NULL--` <br>
 
 ### The reason for using NULL as the values returned from the injected SELECT query is that the data types in each column must be compatible between the original and the injected queries. Since NULL is convertible to every commonly used data type, using NULL maximizes the chance that the payload will succeed when the column count is correct.
 ### On Oracle, every SELECT query must use the FROM keyword and specify a valid table. There is a built-in table on Oracle called dual which can be used for this purpose. So the injected queries on Oracle would need to look like: ' UNION SELECT NULL FROM DUAL--.
 ### The payloads described use the double-dash comment sequence -- to comment out the remainder of the original query following the injection point. On MySQL, the double-dash sequence must be followed by a space. Alternatively, the hash character # can be used to identify a comment.
 
 ### Having already determined the number of required columns, you can probe each column to test whether it can hold string data by submitting a series of UNION SELECT payloads that place a string value into each column in turn. For example, if the query returns four columns, you would submit:
-`' UNION SELECT 'a',NULL,NULL,NULL--`
-`' UNION SELECT NULL,'a',NULL,NULL--`
-`' UNION SELECT NULL,NULL,'a',NULL--`
-`' UNION SELECT NULL,NULL,NULL,'a'--`
+`' UNION SELECT 'a',NULL,NULL,NULL--` <br>
+`' UNION SELECT NULL,'a',NULL,NULL--` <br>
+`' UNION SELECT NULL,NULL,'a',NULL--` <br>
+`' UNION SELECT NULL,NULL,NULL,'a'--` <br>
 
 ### If the data type of a column is not compatible with string data, the injected query will cause a database error
 
