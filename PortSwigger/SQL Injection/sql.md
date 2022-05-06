@@ -153,3 +153,4 @@
 `'+UNION+SELECT+USERNAME_UVKOLW,+PASSWORD_FQOUCN+FROM+USERS_EURTJQ--`
 
 
+# Lab: Blind SQL injection with conditional responses
