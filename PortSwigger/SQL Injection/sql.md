@@ -4,7 +4,7 @@
 
 #### To solve the lab, perform an SQL injection attack that causes the application to display details of all products in any category, both released and unreleased.
 
-GET /filter?category=Lifestyle'+OR+1=1--
+`GET /filter?category=Lifestyle'+OR+1=1--`
 
 # Lab: SQL injection vulnerability allowing login bypass
 
