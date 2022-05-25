@@ -8,5 +8,5 @@
 
 - [**Blind SQL Injection**](https://github.com/hackerbytrade/Hacker-Docs/blob/a9f4feb43e8a07dae8c2e2e6ddd26f8f399e462f/PortSwigger/sql_blind.md)
 
-- [**SQL Cheat Sheet**](https://github.com/hackerbytrade/Hacker-Docs/blob/77efeb61bd0cc8cc110b6f41227bdbea09d99e34/PortSwigger/sql/sql_cheat_sheet_updated.md)
+- [**SQL Cheat Sheet**](https://github.com/hackerbytrade/Hacker-Docs/blob/17d0e5726d0cac24917e9684cdee50c4e02e14b5/PortSwigger/sql/sql_cheat_sheet.md)
                         
